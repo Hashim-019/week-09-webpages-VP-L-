@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Banking App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .bank-app {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-app">
+        <h2>My Bank</h2>
+        <p>Balance: $<span id="balance">0</span></p>
+        <input type="number" id="amount" placeholder="Enter amount" />
+        <br>
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+        <p id="message" style="color:red;"></p>
+    </div>
+
+    <script>
+        let balance = 0;
+
+        function deposit() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const message = document.getElementById('message');
+            if (isNaN(amount) || amount <= 0) {
+                message.textContent = "Enter a valid amount to deposit!";
+                return;
+            }
+            balance += amount;
+            document.getElementById('balance').textContent = balance.toFixed(2);
+            message.textContent = "Deposit successful!";
+        }
+
+        function withdraw() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const message = document.getElementById('message');
+            if (isNaN(amount) || amount <= 0) {
+                message.textContent = "Enter a valid amount to withdraw!";
+                return;
+            }
+            if (amount > balance) {
+                message.textContent = "Insufficient balance!";
+                return;
+            }
+            balance -= amount;
+            document.getElementById('balance').textContent = balance.toFixed(2);
+            message.textContent = "Withdrawal successful!";
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
